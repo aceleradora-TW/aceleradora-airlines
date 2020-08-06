@@ -2,10 +2,12 @@ package com.aceleradora.airlines.repositories;
 
 import com.aceleradora.airlines.domain.flight.Flight;
 import com.aceleradora.airlines.domain.flight.FlightNumber;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.List;
 
+@Repository
 public class FlightInMemoryRepository {
 
     public Collection<Flight> findAll() {

@@ -14,6 +14,10 @@ public final class Flight {
         return number.getCarrier();
     }
 
+    public String getNumber() {
+        return number.getNumber();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
