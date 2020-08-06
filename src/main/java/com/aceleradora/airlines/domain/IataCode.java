@@ -12,11 +12,11 @@ public class IataCode {
             throw new IllegalArgumentException(String.format("Invalid IATA code: '%s'", value));
         }
 
-        this.value = value;
+        this.value = value.toUpperCase();
     }
 
     public static IataCode parse(String value) {
-        return new IataCode(value.toUpperCase());
+        return new IataCode(value);
     }
 
     public String getValue() {

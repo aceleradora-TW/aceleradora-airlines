@@ -11,7 +11,7 @@ public class CountryCode {
         if (value == null || !value.matches(TWO_LETTERS)) {
             throw new IllegalArgumentException(String.format("Invalid country code: '%s'", value));
         }
-        this.value = value;
+        this.value = value.toUpperCase();
     }
 
     public String getValue() {
@@ -19,7 +19,7 @@ public class CountryCode {
     }
 
     public static CountryCode parse(String value) {
-        return new CountryCode(value.toUpperCase());
+        return new CountryCode(value);
     }
 
     @Override
