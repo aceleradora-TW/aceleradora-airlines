@@ -1,4 +1,4 @@
-package com.aceleradora.airlines;
+package com.aceleradora.airlines.controllers;
 
 import com.aceleradora.airlines.domain.flight.Flight;
 import com.aceleradora.airlines.services.FlightService;
@@ -25,5 +25,15 @@ public class FlightController {
     @GetMapping("/flights/carrier/{carrier}")
     public Collection<Flight> byCarrier(@PathVariable String carrier) {
         return service.findByCarrier(carrier);
+    }
+
+    @GetMapping("/flights/departing")
+    public Collection<Flight> byDeparture(PositionCriteria criteria) {
+        return service.findByDeparture(criteria);
+    }
+
+    @GetMapping("/flights/arriving")
+    public Collection<Flight> byArrival(PositionCriteria criteria) {
+        return service.findByArrival(criteria);
     }
 }
