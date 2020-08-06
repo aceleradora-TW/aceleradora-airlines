@@ -106,6 +106,14 @@ GET /flights/carrier/{carrier}
 
 **Resposta:**
 
+Status:
+
+```http request
+200 OK
+```
+
+Corpo:
+
 ```json
 [
     {
@@ -141,6 +149,33 @@ GET /flights/departing
 |airport|Não|GRU|Código IATA do aeroporto de partida|
 |country|Não|BR|Código ISO do país de partida|
 
+Status:
+
+```http request
+200 OK
+```
+
+Corpo:
+
+```json
+[
+    {
+        "number": "1060",
+        "departure": {
+            "airport": "POA",
+            "city": "POA",
+            "country": "BR"
+        },
+        "arrival": {
+            "airport": "CGH",
+            "city": "SAO",
+            "country": "BR"
+        },
+        "carrier": "AZU"
+    }
+]
+```
+
 ### Buscar voo por informações de chegada
 
 **Requisição:**
@@ -157,6 +192,32 @@ GET /flights/arriving
 |airport|Não|GRU|Código IATA do aeroporto de chegada|
 |country|Não|BR|Código ISO do país de chegada|
 
+Status:
+
+```http request
+200 OK
+```
+
+Corpo:
+
+```json
+[
+    {
+        "number": "1060",
+        "departure": {
+            "airport": "POA",
+            "city": "POA",
+            "country": "BR"
+        },
+        "arrival": {
+            "airport": "CGH",
+            "city": "SAO",
+            "country": "BR"
+        },
+        "carrier": "AZU"
+    }
+]
+```
 
 ### Criar um itinerário
 
@@ -196,6 +257,17 @@ Content-Type: application/json
 
 **Resposta:**
 
+Status:
+
+```http request
+201 Created
+```
+
+Corpo:
+
+Importante observar que a resposta contém o ID do registro que foi criado. Este ID é utilizado para pesquisa e 
+remoção do itinerário.
+
 ```json
 {
     "segments": [
@@ -223,6 +295,34 @@ Content-Type: application/json
 ```http request
 GET /itinerary/{id}
 ```
+**Resposta:**
+
+Status:
+
+```http request
+200 OK
+```
+
+Corpo:
+```json
+{
+    "segments": [
+        {
+            "origin": {
+                "airport": "POA",
+                "city": "POA",
+                "country": "BR"
+            },
+            "destination": {
+                "airport": "JFK",
+                "city": "NYC",
+                "country": "US"
+            }
+        }
+    ],
+    "id": "04274824-f58a-4ed4-b105-ec3f82c5e3cf"
+}
+```
 
 ### Remover um itinerário
 
@@ -231,3 +331,11 @@ GET /itinerary/{id}
 ```http request
 DELETE /itinerary/{id}
 ```
+
+Status:
+
+```http request
+200 OK
+```
+
+Corpo: Sem corpo
