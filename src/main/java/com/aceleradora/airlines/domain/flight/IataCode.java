@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class IataCode {
 
+    private static final String THREE_LETTERS = "[a-zA-Z]{3}";
     private final String value;
 
     private IataCode(String value) {
@@ -11,7 +12,11 @@ public class IataCode {
     }
 
     public static IataCode parse(String value) {
-        return new IataCode(value);
+        if (value == null || !value.matches(THREE_LETTERS)) {
+            throw new IllegalArgumentException(String.format("Invalid IATA code: '%s'", value));
+        }
+
+        return new IataCode(value.toUpperCase());
     }
 
     public String getValue() {

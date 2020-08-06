@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class CountryCode {
 
+    private static final String TWO_LETTERS = "[A-Za-z]{2}";
     private final String value;
 
     private CountryCode(String value) {
@@ -15,7 +16,10 @@ public class CountryCode {
     }
 
     public static CountryCode parse(String value) {
-        return new CountryCode(value);
+        if (value == null || !value.matches(TWO_LETTERS)) {
+            throw new IllegalArgumentException(String.format("Invalid country code: '%s'", value));
+        }
+        return new CountryCode(value.toUpperCase());
     }
 
     @Override
