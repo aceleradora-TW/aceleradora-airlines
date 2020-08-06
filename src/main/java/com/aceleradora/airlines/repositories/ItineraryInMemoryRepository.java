@@ -28,4 +28,12 @@ public class ItineraryInMemoryRepository {
         itineraries.add(itineraryWithId);
         return itineraryWithId;
     }
+
+    public void deleteAll() {
+        itineraries = new ArrayList<>();
+    }
+
+    public void deleteById(String id) {
+        itineraries.removeIf(it -> it.hasId(UUID.fromString(id)));
+    }
 }

@@ -3,6 +3,7 @@ package com.aceleradora.airlines.controllers;
 import com.aceleradora.airlines.domain.itinerary.Itinerary;
 import com.aceleradora.airlines.repositories.ItineraryInMemoryRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +34,12 @@ public class ItineraryController {
         return ResponseEntity.notFound().build();
     }
 
+    @DeleteMapping("/itinerary/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        repository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
     @PostMapping("/itinerary")
     public ResponseEntity<Itinerary> create(@RequestBody Itinerary itinerary) {
         System.out.println(itinerary);
@@ -45,5 +52,11 @@ public class ItineraryController {
     @GetMapping("/itineraries")
     public Collection<Itinerary> getAll() {
         return repository.findAll();
+    }
+
+    @DeleteMapping("/itineraries")
+    public ResponseEntity<Void> clearAll() {
+        repository.deleteAll();
+        return ResponseEntity.ok().build();
     }
 }
