@@ -6,6 +6,17 @@ Para rodar o projeto localmente:
 ./gradlew bootrun
 ```
 
+## Tarefas
+
+- Busque todos os voos saindo de Porto Alegre;
+- Busque todos os voos chegando em Porto Alegre;
+- Busque todos os voos chegando na Argentina;
+- Busque todos os voos operados pelo carrier Azul (AZU);
+- Crie um ou mais itinerários com quantas paradas quiser, mas lembre de respeitar os formatos IATA e ISO;
+- Busque todos os itinerários;
+- Encontre um de seus itinerários (lembre-se de utilizar o id);
+- Apague um de seus itinerários (lembre-se de utilizar o id).
+
 ## Conceitos
 
 #### Código IATA
@@ -401,3 +412,5 @@ Status:
 ```
 
 Corpo: Sem corpo
+
+
