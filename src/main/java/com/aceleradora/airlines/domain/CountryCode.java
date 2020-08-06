@@ -1,4 +1,4 @@
-package com.aceleradora.airlines.domain.flight;
+package com.aceleradora.airlines.domain;
 
 import java.util.Objects;
 
@@ -8,6 +8,9 @@ public class CountryCode {
     private final String value;
 
     private CountryCode(String value) {
+        if (value == null || !value.matches(TWO_LETTERS)) {
+            throw new IllegalArgumentException(String.format("Invalid country code: '%s'", value));
+        }
         this.value = value;
     }
 
@@ -16,9 +19,6 @@ public class CountryCode {
     }
 
     public static CountryCode parse(String value) {
-        if (value == null || !value.matches(TWO_LETTERS)) {
-            throw new IllegalArgumentException(String.format("Invalid country code: '%s'", value));
-        }
         return new CountryCode(value.toUpperCase());
     }
 

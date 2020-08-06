@@ -1,4 +1,4 @@
-package com.aceleradora.airlines.domain.flight;
+package com.aceleradora.airlines.domain;
 
 import java.util.Objects;
 

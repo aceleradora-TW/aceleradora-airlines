@@ -1,10 +1,10 @@
 package com.aceleradora.airlines.repositories;
 
-import com.aceleradora.airlines.domain.flight.CountryCode;
+import com.aceleradora.airlines.domain.CountryCode;
 import com.aceleradora.airlines.domain.flight.Flight;
 import com.aceleradora.airlines.domain.flight.FlightNumber;
-import com.aceleradora.airlines.domain.flight.IataCode;
-import com.aceleradora.airlines.domain.flight.Position;
+import com.aceleradora.airlines.domain.IataCode;
+import com.aceleradora.airlines.domain.Position;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;

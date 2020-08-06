@@ -1,7 +1,7 @@
 package com.aceleradora.airlines.controllers;
 
-import com.aceleradora.airlines.domain.flight.CountryCode;
-import com.aceleradora.airlines.domain.flight.IataCode;
+import com.aceleradora.airlines.domain.CountryCode;
+import com.aceleradora.airlines.domain.IataCode;
 
 import java.util.Objects;
 

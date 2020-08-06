@@ -1,6 +1,6 @@
 package com.aceleradora.airlines.controllers.converters;
 
-import com.aceleradora.airlines.domain.flight.CountryCode;
+import com.aceleradora.airlines.domain.CountryCode;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 

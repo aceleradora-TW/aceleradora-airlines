@@ -2,7 +2,7 @@ package com.aceleradora.airlines.services;
 
 import com.aceleradora.airlines.controllers.PositionCriteria;
 import com.aceleradora.airlines.domain.flight.Flight;
-import com.aceleradora.airlines.domain.flight.Position;
+import com.aceleradora.airlines.domain.Position;
 import com.aceleradora.airlines.repositories.FlightInMemoryRepository;
 import org.springframework.stereotype.Service;
 

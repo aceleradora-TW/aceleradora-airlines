@@ -1,4 +1,4 @@
-package com.aceleradora.airlines.domain.flight;
+package com.aceleradora.airlines.domain;
 
 import java.util.Objects;
 
@@ -8,14 +8,14 @@ public class IataCode {
     private final String value;
 
     private IataCode(String value) {
-        this.value = value;
-    }
-
-    public static IataCode parse(String value) {
         if (value == null || !value.matches(THREE_LETTERS)) {
             throw new IllegalArgumentException(String.format("Invalid IATA code: '%s'", value));
         }
 
+        this.value = value;
+    }
+
+    public static IataCode parse(String value) {
         return new IataCode(value.toUpperCase());
     }
 

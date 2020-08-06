@@ -1,5 +1,6 @@
 package com.aceleradora.airlines.domain.flight;
 
+import com.aceleradora.airlines.domain.CountryCode;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

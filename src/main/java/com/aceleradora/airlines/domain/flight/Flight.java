@@ -1,5 +1,7 @@
 package com.aceleradora.airlines.domain.flight;
 
+import com.aceleradora.airlines.domain.Position;
+
 import java.util.Objects;
 
 public final class Flight {
