@@ -67,15 +67,15 @@ Host: http://aceleradora-airlines.herokuapp.com
 
 ### Buscar todos os voos
 
-Request:
+**Requisição:**
 
 ```http request
 GET /flights
 ```
 
-Response:
+**Resposta:**
 
-```http
+```json
 [
     {
         "number": "1060",
@@ -98,15 +98,15 @@ Response:
 
 ### Buscar voos por carrier
 
-Request:
+**Requisição:**
 
 ```http request
 GET /flights/carrier/{carrier}
 ```
 
-Response:
+**Resposta:**
 
-```http
+```json
 [
     {
         "number": "1060",
@@ -127,13 +127,13 @@ Response:
 
 ### Buscar voo por informações de partida
 
-Request:
+**Requisição:**
 
 ```http request
 GET /flights/departing
 ```
 
-Parâmetros:
+**Parâmetros:**
 
 |Nome|Obrigatório|Exemplo|Descrição|
 |---|---|---|---|
@@ -143,13 +143,13 @@ Parâmetros:
 
 ### Buscar voo por informações de chegada
 
-Request:
+**Requisição:**
 
 ```http request
 GET /flights/arriving
 ```
 
-Parâmetros:
+**Parâmetros:**
 
 |Nome|Obrigatório|Exemplo|Descrição|
 |---|---|---|---|
@@ -160,3 +160,74 @@ Parâmetros:
 
 ### Criar um itinerário
 
+**Requisição:**
+```http request
+POST /itinerary
+```
+
+**Cabeçalhos:**
+
+```http request
+Content-Type: application/json
+```
+
+**Corpo:**
+
+```json
+{
+    "segments": [
+        {
+            "origin": {
+                "airport": "POA",
+                "city": "POA",
+                "country": "BR"
+            },
+
+            "destination": {
+                "airport": "JFK",
+                "city": "NYC",
+                "country": "US"
+            }
+
+        }
+    ]
+}
+```
+
+**Resposta:**
+
+```json
+{
+    "segments": [
+        {
+            "origin": {
+                "airport": "POA",
+                "city": "POA",
+                "country": "BR"
+            },
+            "destination": {
+                "airport": "JFK",
+                "city": "NYC",
+                "country": "US"
+            }
+        }
+    ],
+    "id": "04274824-f58a-4ed4-b105-ec3f82c5e3cf"
+}
+```
+
+### Buscar um itinerário específico
+
+**Requisição:**
+
+```http request
+GET /itinerary/{id}
+```
+
+### Remover um itinerário
+
+**Requisição:**
+
+```http request
+DELETE /itinerary/{id}
+```
