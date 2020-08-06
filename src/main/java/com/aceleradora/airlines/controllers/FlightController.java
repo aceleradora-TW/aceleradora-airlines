@@ -4,7 +4,6 @@ import com.aceleradora.airlines.domain.flight.Flight;
 import com.aceleradora.airlines.services.FlightService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,16 +48,16 @@ public class FlightController {
         private final String name;
         private final Object value;
 
-        public InvalidParameter(String name, Object value) {
+        InvalidParameter(String name, Object value) {
             this.name = name;
             this.value = value;
         }
 
-        public String getName() {
+        String getName() {
             return name;
         }
 
-        public Object getValue() {
+        Object getValue() {
             return value;
         }
     }
