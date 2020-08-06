@@ -22,6 +22,8 @@ public final class FlightNumber {
             throw new IllegalArgumentException(String.format("Invalid flight number: '%s'", number));
         }
 
-        return null;
+        return new FlightNumber(
+                number.substring(0, 2),
+                number.substring(2));
     }
 }

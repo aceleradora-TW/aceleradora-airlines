@@ -11,9 +11,17 @@ class FlightNumberTest {
     @Test
     void failsWhenContentLengthIsTooShort() {
         var thrownEmpty = assertThrows(IllegalArgumentException.class, () -> FlightNumber.parse(""));
-        var thrownSmallNumber  = assertThrows(IllegalArgumentException.class, () -> FlightNumber.parse("20"));
+        var thrownSmallNumber = assertThrows(IllegalArgumentException.class, () -> FlightNumber.parse("20"));
 
         assertThat(thrownEmpty.getMessage(), equalTo("Invalid flight number: ''"));
         assertThat(thrownSmallNumber.getMessage(), equalTo("Invalid flight number: '20'"));
+    }
+
+    @Test
+    void parsesCarrierNameIncludingNumbers() {
+        var number = FlightNumber.parse("G31327");
+
+        assertThat(number.getCarrier(), equalTo("G3"));
+        assertThat(number.getNumber(), equalTo("1327"));
     }
 }
