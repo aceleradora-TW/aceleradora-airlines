@@ -324,6 +324,61 @@ Corpo:
 }
 ```
 
+### Buscar todos os itinerários
+
+**Requisição:**
+
+```http request
+GET /itineraries
+```
+**Resposta:**
+
+Status:
+
+```http request
+200 OK
+```
+
+Corpo:
+```json
+[
+    {
+        "segments": [
+            {
+                "origin": {
+                    "airport": "POA",
+                    "city": "POA",
+                    "country": "BR"
+                },
+                "destination": {
+                    "airport": "JFK",
+                    "city": "NYC",
+                    "country": "US"
+                }
+            }
+        ],
+        "id": "03a5f31d-21f2-47dd-9f16-815d80baac4b"
+    },
+    {
+        "segments": [
+            {
+                "origin": {
+                    "airport": "POA",
+                    "city": "POA",
+                    "country": "BR"
+                },
+                "destination": {
+                    "airport": "JFK",
+                    "city": "NYC",
+                    "country": "US"
+                }
+            }
+        ],
+        "id": "9f3e0da2-988c-49bc-b5cb-79e8275a43b0"
+    }
+]
+```
+
 ### Remover um itinerário
 
 **Requisição:**
