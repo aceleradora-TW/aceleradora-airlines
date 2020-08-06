@@ -27,6 +27,13 @@ Dentro da API, cidades e aeroportos são representados por seus códigos IATA.
 
 Dentro da API, países são representados por seus códigos ISO 3166-1 alpha-2.
 
+#### UUID
+
+> A universally unique identifier (UUID) is a 128-bit number used to identify information in computer systems.
+> \- [Wikipédia](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+
+O UUID é o formato do atributo id dos itinerários. Este atributo é utilizado para identificar cada itinerário.
+
 #### Carrier
 
 Carrier é o código da empresa aérea responsável pelo voo.
