@@ -11,7 +11,7 @@ public class CountryCode {
         this.value = value;
     }
 
-    String getValue() {
+    public String getValue() {
         return value;
     }
 

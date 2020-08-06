@@ -12,20 +12,20 @@ import java.util.List;
 
 @Repository
 public class FlightInMemoryRepository {
-    public static final CountryCode BRASIL = CountryCode.parse("BR");
-    public static final CountryCode ARGENTINA = CountryCode.parse("AR");
-    public static final CountryCode CHILE = CountryCode.parse("CL");
-    public static final IataCode PORTO_ALEGRE = IataCode.parse("POA");
-    public static final IataCode RIO_DE_JANEIRO = IataCode.parse("RIO");
-    public static final IataCode SAO_PAULO = IataCode.parse("SAO");
-    public static final IataCode CONGONHAS = IataCode.parse("CGH");
-    public static final IataCode SALGADO_FILHO = IataCode.parse("POA");
-    public static final IataCode BUENOS_AIRES = IataCode.parse("BUE");
-    public static final IataCode AEROPARQUE_JORGE_NEWBERY = IataCode.parse("AEP");
-    public static final IataCode SANTIAGO = IataCode.parse("SCL");
-    public static final IataCode COMODORO_ARTURO_MERINO_BENITEZ = IataCode.parse("SCL");
-    public static final IataCode GALEAO = IataCode.parse("GIG");
-    public static final IataCode GUARULHOS = IataCode.parse("GRU");
+    private static final CountryCode BRASIL = CountryCode.parse("BR");
+    private static final CountryCode ARGENTINA = CountryCode.parse("AR");
+    private static final CountryCode CHILE = CountryCode.parse("CL");
+    private static final IataCode PORTO_ALEGRE = IataCode.parse("POA");
+    private static final IataCode RIO_DE_JANEIRO = IataCode.parse("RIO");
+    private static final IataCode SAO_PAULO = IataCode.parse("SAO");
+    private static final IataCode CONGONHAS = IataCode.parse("CGH");
+    private static final IataCode SALGADO_FILHO = IataCode.parse("POA");
+    private static final IataCode BUENOS_AIRES = IataCode.parse("BUE");
+    private static final IataCode AEROPARQUE_JORGE_NEWBERY = IataCode.parse("AEP");
+    private static final IataCode SANTIAGO = IataCode.parse("SCL");
+    private static final IataCode COMODORO_ARTURO_MERINO_BENITEZ = IataCode.parse("SCL");
+    private static final IataCode GALEAO = IataCode.parse("GIG");
+    private static final IataCode GUARULHOS = IataCode.parse("GRU");
 
     public Collection<Flight> findAll() {
         return List.of(

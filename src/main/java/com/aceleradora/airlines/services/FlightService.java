@@ -50,14 +50,20 @@ public class FlightService {
     }
 
     private Predicate<Flight> cityMatches(Function<Flight, Position> getter, PositionCriteria criteria) {
-        return f -> getter.apply(f).getCity().equalsIgnoreCase(criteria.getFromCity());
+        return criteria.getCity() == null
+                ? f -> false
+                : f -> getter.apply(f).getCity().equalsIgnoreCase(criteria.getCity().getValue());
     }
 
     private Predicate<Flight> airportMatches(Function<Flight, Position> getter, PositionCriteria criteria) {
-        return f -> getter.apply(f).getAirport().equalsIgnoreCase(criteria.getFromAirport());
+        return criteria.getAirport() == null
+                ? f -> false
+                : f -> getter.apply(f).getAirport().equalsIgnoreCase(criteria.getAirport().getValue());
     }
 
     private Predicate<Flight> countryMatches(Function<Flight, Position> getter, PositionCriteria criteria) {
-        return f -> getter.apply(f).getCountry().equalsIgnoreCase(criteria.getFromCountry());
+        return criteria.getCountry() == null
+                ? f -> false
+                : f -> getter.apply(f).getCountry().equalsIgnoreCase(criteria.getCountry().getValue());
     }
 }

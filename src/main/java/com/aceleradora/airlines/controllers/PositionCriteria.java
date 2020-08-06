@@ -1,28 +1,31 @@
 package com.aceleradora.airlines.controllers;
 
+import com.aceleradora.airlines.domain.flight.CountryCode;
+import com.aceleradora.airlines.domain.flight.IataCode;
+
 import java.util.Objects;
 
 public final class PositionCriteria {
-    private String fromCity;
-    private String fromAirport;
-    private String fromCountry;
+    private IataCode city;
+    private IataCode airport;
+    private CountryCode country;
 
-    public PositionCriteria(String fromCity, String fromAirport, String fromCountry) {
-        this.fromCity = fromCity;
-        this.fromAirport = fromAirport;
-        this.fromCountry = fromCountry;
+    public PositionCriteria(IataCode city, IataCode airport, CountryCode country) {
+        this.city = city;
+        this.airport = airport;
+        this.country = country;
     }
 
-    public String getFromCity() {
-        return fromCity;
+    public IataCode getCity() {
+        return city;
     }
 
-    public String getFromAirport() {
-        return fromAirport;
+    public IataCode getAirport() {
+        return airport;
     }
 
-    public String getFromCountry() {
-        return fromCountry;
+    public CountryCode getCountry() {
+        return country;
     }
 
     @Override
@@ -30,22 +33,22 @@ public final class PositionCriteria {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PositionCriteria that = (PositionCriteria) o;
-        return Objects.equals(fromCity, that.fromCity) &&
-                Objects.equals(fromAirport, that.fromAirport) &&
-                Objects.equals(fromCountry, that.fromCountry);
+        return Objects.equals(city, that.city) &&
+                Objects.equals(airport, that.airport) &&
+                Objects.equals(country, that.country);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fromCity, fromAirport, fromCountry);
+        return Objects.hash(city, airport, country);
     }
 
     @Override
     public String toString() {
         return "PositionCriteria{" +
-                "fromCity='" + fromCity + '\'' +
-                ", fromAirport='" + fromAirport + '\'' +
-                ", fromCountry='" + fromCountry + '\'' +
+                "fromCity='" + city + '\'' +
+                ", fromAirport='" + airport + '\'' +
+                ", fromCountry='" + country + '\'' +
                 '}';
     }
 }
