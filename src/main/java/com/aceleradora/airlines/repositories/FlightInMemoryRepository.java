@@ -1,5 +1,6 @@
 package com.aceleradora.airlines.repositories;
 
+import com.aceleradora.airlines.domain.Aircraft;
 import com.aceleradora.airlines.domain.CountryCode;
 import com.aceleradora.airlines.domain.IataCode;
 import com.aceleradora.airlines.domain.Position;
@@ -43,32 +44,34 @@ public class FlightInMemoryRepository {
     private static final String LAN = "LAN";
 
     private static final List<Flight> AVAILABLE_FLIGHTS = List.of(
-            flight(number(AA, "1012"), departing(JFK, NYC, US), arriving(GRU, SAO, BR)),
-            flight(number(AA, "1013"), departing(GRU, SAO, BR), arriving(SCL, CL)),
-            flight(number(AA, "1014"), departing(GRU, SAO, BR), arriving(CWB, CWB, BR)),
-            flight(number(AZU, "1060"), departing(POA, BR), arriving(CGH, SAO, BR)),
-            flight(number(AZU, "2030"), departing(POA, BR), arriving(AEP, BUE, AR)),
-            flight(number(AZU, "2035"), departing(POA, BR), arriving(FLN, BR)),
-            flight(number(AZU, "2036"), departing(FLN, BR), arriving(POA, BR)),
-            flight(number(LAN, "744"), departing(POA, BR), arriving(SCL, CL)),
-            flight(number(LAN, "1742"), departing(FLN, BR), arriving(CWB, BR)),
-            flight(number(LAN, "1747"), departing(CWB, BR), arriving(FLN, BR)),
-            flight(number(LAN, "1550"), departing(GIG, RIO, BR), arriving(POA, BR)),
-            flight(number(G3, "4550"), departing(SCL, CL), arriving(MVD, UY)),
-            flight(number(G3, "4543"), departing(MVD, UY), arriving(SCL, CL)),
-            flight(number(G3, "0442"), departing(MVD, UY), arriving(CWB, BR)),
-            flight(number(G3, "0440"), departing(CWB, BR), arriving(MVD, UY)),
-            flight(number(G3, "1011"), departing(SCL, CL), arriving(POA, BR)),
-            flight(number(G3, "1327"), departing(GRU, SAO, BR), arriving(GIG, RIO, BR)));
+            flight(number(AA, "1012"), departing(JFK, NYC, US), arriving(GRU, SAO, BR), aircraft("Boeing", "787-900")),
+            flight(number(AA, "1013"), departing(GRU, SAO, BR), arriving(SCL, CL), aircraft("Boeing", "787-900")),
+            flight(number(AA, "1014"), departing(GRU, SAO, BR), arriving(CWB, CWB, BR), aircraft("Boeing", "787-900")),
+            flight(number(AZU, "1060"), departing(POA, BR), arriving(CGH, SAO, BR), aircraft("Boeing", "787-900")),
+            flight(number(AZU, "2030"), departing(POA, BR), arriving(AEP, BUE, AR), aircraft("Boeing", "787-900")),
+            flight(number(AZU, "2035"), departing(POA, BR), arriving(FLN, BR), aircraft("Boeing", "787-900")),
+            flight(number(AZU, "2036"), departing(FLN, BR), arriving(POA, BR), aircraft("Boeing", "787-900")),
+            flight(number(LAN, "744"), departing(POA, BR), arriving(SCL, CL), aircraft("Boeing", "787-900")),
+            flight(number(LAN, "1742"), departing(FLN, BR), arriving(CWB, BR), aircraft("Boeing", "787-900")),
+            flight(number(LAN, "1747"), departing(CWB, BR), arriving(FLN, BR), aircraft("Boeing", "787-900")),
+            flight(number(LAN, "1550"), departing(GIG, RIO, BR), arriving(POA, BR), aircraft("Boeing", "787-900")),
+            flight(number(G3, "4550"), departing(SCL, CL), arriving(MVD, UY), aircraft("Boeing", "787-900")),
+            flight(number(G3, "4543"), departing(MVD, UY), arriving(SCL, CL), aircraft("Boeing", "787-900")),
+            flight(number(G3, "0442"), departing(MVD, UY), arriving(CWB, BR), aircraft("Boeing", "787-900")),
+            flight(number(G3, "0440"), departing(CWB, BR), arriving(MVD, UY), aircraft("Boeing", "787-900")),
+            flight(number(G3, "1011"), departing(SCL, CL), arriving(POA, BR), aircraft("Boeing", "787-900")),
+            flight(number(G3, "1327"), departing(GRU, SAO, BR), arriving(GIG, RIO, BR),  aircraft("Boeing", "787-900")));
 
     public Collection<Flight> findAll() {
         return AVAILABLE_FLIGHTS;
     }
 
-    private static Flight flight(FlightNumber number, Position departure, Position arrival) {
-        return new Flight(number, departure, arrival);
+    private static Flight flight(FlightNumber number, Position departure, Position arrival, Aircraft aircraft) {
+        return new Flight(number, departure, arrival, aircraft);
     }
-
+    private static Aircraft aircraft(String manufacture, String model){
+        return new Aircraft(manufacture, model);
+    }
     private static FlightNumber number(String carrier, String number) {
         return new FlightNumber(carrier, number);
     }
