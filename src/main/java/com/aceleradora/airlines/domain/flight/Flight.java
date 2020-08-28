@@ -9,12 +9,15 @@ public final class Flight {
     private final FlightNumber number;
     private final Position departure;
     private final Position arrival;
+    private final int duration;
 
-    public Flight(FlightNumber number, Position departure, Position arrival) {
+    public Flight(FlightNumber number, Position departure, Position arrival, int duration) {
         this.number = number;
         this.departure = departure;
         this.arrival = arrival;
+        this.duration = duration;
     }
+    public int getDuration() {return duration;}
 
     public String getCarrier() {
         return number.getCarrier();

@@ -43,30 +43,30 @@ public class FlightInMemoryRepository {
     private static final String LAN = "LAN";
 
     private static final List<Flight> AVAILABLE_FLIGHTS = List.of(
-            flight(number(AA, "1012"), departing(JFK, NYC, US), arriving(GRU, SAO, BR)),
-            flight(number(AA, "1013"), departing(GRU, SAO, BR), arriving(SCL, CL)),
-            flight(number(AA, "1014"), departing(GRU, SAO, BR), arriving(CWB, CWB, BR)),
-            flight(number(AZU, "1060"), departing(POA, BR), arriving(CGH, SAO, BR)),
-            flight(number(AZU, "2030"), departing(POA, BR), arriving(AEP, BUE, AR)),
-            flight(number(AZU, "2035"), departing(POA, BR), arriving(FLN, BR)),
-            flight(number(AZU, "2036"), departing(FLN, BR), arriving(POA, BR)),
-            flight(number(LAN, "744"), departing(POA, BR), arriving(SCL, CL)),
-            flight(number(LAN, "1742"), departing(FLN, BR), arriving(CWB, BR)),
-            flight(number(LAN, "1747"), departing(CWB, BR), arriving(FLN, BR)),
-            flight(number(LAN, "1550"), departing(GIG, RIO, BR), arriving(POA, BR)),
-            flight(number(G3, "4550"), departing(SCL, CL), arriving(MVD, UY)),
-            flight(number(G3, "4543"), departing(MVD, UY), arriving(SCL, CL)),
-            flight(number(G3, "0442"), departing(MVD, UY), arriving(CWB, BR)),
-            flight(number(G3, "0440"), departing(CWB, BR), arriving(MVD, UY)),
-            flight(number(G3, "1011"), departing(SCL, CL), arriving(POA, BR)),
-            flight(number(G3, "1327"), departing(GRU, SAO, BR), arriving(GIG, RIO, BR)));
+            flight(number(AA, "1012"), departing(JFK, NYC, US), arriving(GRU, SAO, BR),600),
+            flight(number(AA, "1013"), departing(GRU, SAO, BR), arriving(SCL, CL), 240),
+            flight(number(AA, "1014"), departing(GRU, SAO, BR), arriving(CWB, CWB, BR), 60),
+            flight(number(AZU, "1060"), departing(POA, BR), arriving(CGH, SAO, BR),60),
+            flight(number(AZU, "2030"), departing(POA, BR), arriving(AEP, BUE, AR), 45),
+            flight(number(AZU, "2035"), departing(POA, BR), arriving(FLN, BR),30),
+            flight(number(AZU, "2036"), departing(FLN, BR), arriving(POA, BR), 300),
+            flight(number(LAN, "744"), departing(POA, BR), arriving(SCL, CL), 250),
+            flight(number(LAN, "1742"), departing(FLN, BR), arriving(CWB, BR),250),
+            flight(number(LAN, "1747"), departing(CWB, BR), arriving(FLN, BR),20),
+            flight(number(LAN, "1550"), departing(GIG, RIO, BR), arriving(POA, BR),80),
+            flight(number(G3, "4550"), departing(SCL, CL), arriving(MVD, UY), 60),
+            flight(number(G3, "4543"), departing(MVD, UY), arriving(SCL, CL), 60),
+            flight(number(G3, "0442"), departing(MVD, UY), arriving(CWB, BR), 404),
+            flight(number(G3, "0440"), departing(CWB, BR), arriving(MVD, UY),40),
+            flight(number(G3, "1011"), departing(SCL, CL), arriving(POA, BR), 120),
+            flight(number(G3, "1327"), departing(GRU, SAO, BR), arriving(GIG, RIO, BR), 20));
 
     public Collection<Flight> findAll() {
         return AVAILABLE_FLIGHTS;
     }
 
-    private static Flight flight(FlightNumber number, Position departure, Position arrival) {
-        return new Flight(number, departure, arrival);
+    private static Flight flight(FlightNumber number, Position departure, Position arrival, int duration) {
+        return new Flight(number, departure, arrival, duration);
     }
 
     private static FlightNumber number(String carrier, String number) {
