@@ -11,29 +11,34 @@ import java.util.Collection;
 @RestController
 public class FlightController {
 
-    private final FlightService service;
+    private final FlightService flightService;
 
-    public FlightController(FlightService service) {
-        this.service = service;
+    public FlightController(FlightService flightService) {
+        this.flightService = flightService;
     }
 
     @GetMapping("/flights")
     public Collection<Flight> allFlights() {
-        return service.findAll();
+        return flightService.findAll();
     }
 
     @GetMapping("/flights/carrier/{carrier}")
     public Collection<Flight> byCarrier(@PathVariable String carrier) {
-        return service.findByCarrier(carrier);
+        return flightService.findByCarrier(carrier);
     }
 
     @GetMapping("/flights/departing")
     public Collection<Flight> byDeparture(PositionCriteria criteria) {
-        return service.findByDeparture(criteria);
+        return flightService.findByDeparture(criteria);
     }
 
     @GetMapping("/flights/arriving")
     public Collection<Flight> byArrival(PositionCriteria criteria) {
-        return service.findByArrival(criteria);
+        return flightService.findByArrival(criteria);
     }
+
+    @GetMapping("/flights/long-haul")
+    public Collection<Flight> longHaul(){return flightService.longHaul();}
+
+
 }

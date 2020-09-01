@@ -4,8 +4,10 @@ import com.aceleradora.airlines.controllers.PositionCriteria;
 import com.aceleradora.airlines.domain.flight.Flight;
 import com.aceleradora.airlines.domain.Position;
 import com.aceleradora.airlines.repositories.FlightInMemoryRepository;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.util.Collection;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -64,6 +66,21 @@ public class FlightService {
     private Predicate<Flight> countryMatches(Function<Flight, Position> getter, PositionCriteria criteria) {
         return criteria.getCountry() == null
                 ? f -> false
+
                 : f -> getter.apply(f).getCountry().equalsIgnoreCase(criteria.getCountry().getValue());
     }
+    public Collection<Flight> longHaul(){
+        return repository.findAll().stream().filter(x->x.getDuration()>240).collect(toList());
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
