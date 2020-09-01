@@ -37,6 +37,8 @@ public class FlightService {
         return findByPosition(Flight::getArrival, criteria);
     }
 
+
+
     private Collection<Flight> findByPosition(Function<Flight, Position> getter, PositionCriteria criteria) {
         return findByPredicate(cityMatches(getter, criteria)
                 .or(airportMatches(getter, criteria))
@@ -66,4 +68,12 @@ public class FlightService {
                 ? f -> false
                 : f -> getter.apply(f).getCountry().equalsIgnoreCase(criteria.getCountry().getValue());
     }
+
+    public Collection<Flight>findByDomestic() {
+        return repository.findAll().stream()
+                .filter(x -> x.getDeparture().getCountry().equals(x.getArrival().getCountry())).collect(toList());
+
+    }
 }
+
+
