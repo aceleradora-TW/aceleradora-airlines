@@ -21,55 +21,55 @@ public class FlightService {
         this.repository = repository;
     }
 
-    public Collection <Flight> findAll() {
+    public Collection<Flight> findAll() {
         return repository.findAll();
     }
 
-    public Collection <Flight> findByCarrier(String carrier) {
+    public Collection<Flight> findByCarrier(String carrier) {
         return findByPredicate(f -> f.getCarrier().equalsIgnoreCase(carrier));
     }
 
-    public Collection <Flight> findByDeparture(PositionCriteria criteria) {
+    public Collection<Flight> findByDeparture(PositionCriteria criteria) {
         return findByPosition(Flight::getDeparture, criteria);
     }
 
-    public Collection <Flight> findByArrival(PositionCriteria criteria) {
+    public Collection<Flight> findByArrival(PositionCriteria criteria) {
         return findByPosition(Flight::getArrival, criteria);
     }
 
 
 
-    private Collection <Flight> findByPosition(Function<Flight, Position> getter, PositionCriteria criteria) {
+    private Collection<Flight> findByPosition(Function<Flight, Position> getter, PositionCriteria criteria) {
         return findByPredicate(cityMatches(getter, criteria)
                 .or(airportMatches(getter, criteria))
                 .or(countryMatches(getter, criteria)));
     }
 
-    private Collection <Flight> findByPredicate(Predicate<Flight> predicate) {
+    private Collection<Flight> findByPredicate(Predicate<Flight> predicate) {
         return repository.findAll().stream()
                 .filter(predicate)
                 .collect(toList());
     }
 
-    private Predicate <Flight> cityMatches(Function<Flight, Position> getter, PositionCriteria criteria) {
+    private Predicate<Flight> cityMatches(Function<Flight, Position> getter, PositionCriteria criteria) {
         return criteria.getCity() == null
                 ? f -> false
                 : f -> getter.apply(f).getCity().equalsIgnoreCase(criteria.getCity().getValue());
     }
 
-    private Predicate <Flight> airportMatches(Function<Flight, Position> getter, PositionCriteria criteria) {
+    private Predicate<Flight> airportMatches(Function<Flight, Position> getter, PositionCriteria criteria) {
         return criteria.getAirport() == null
                 ? f -> false
                 : f -> getter.apply(f).getAirport().equalsIgnoreCase(criteria.getAirport().getValue());
     }
 
-    private Predicate <Flight> countryMatches(Function<Flight, Position> getter, PositionCriteria criteria) {
+    private Predicate<Flight> countryMatches(Function<Flight, Position> getter, PositionCriteria criteria) {
         return criteria.getCountry() == null
                 ? f -> false
                 : f -> getter.apply(f).getCountry().equalsIgnoreCase(criteria.getCountry().getValue());
     }
 
-    public Collection <Flight>findByDomestic() {
+    public Collection<Flight> findByDomestic() {
         return repository.findAll().stream()
                 .filter(flight -> flight.getDeparture().getCountry().equals(flight.getArrival().getCountry())).collect(toList());
 
