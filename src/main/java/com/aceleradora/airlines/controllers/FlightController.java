@@ -18,22 +18,30 @@ public class FlightController {
     }
 
     @GetMapping("/flights")
-    public Collection<Flight> allFlights() {
+    public Collection <Flight> allFlights() {
         return service.findAll();
     }
 
     @GetMapping("/flights/carrier/{carrier}")
-    public Collection<Flight> byCarrier(@PathVariable String carrier) {
+    public Collection <Flight> byCarrier(@PathVariable String carrier) {
         return service.findByCarrier(carrier);
     }
 
     @GetMapping("/flights/departing")
-    public Collection<Flight> byDeparture(PositionCriteria criteria) {
+    public Collection <Flight> byDeparture(PositionCriteria criteria) {
+
         return service.findByDeparture(criteria);
     }
 
     @GetMapping("/flights/arriving")
-    public Collection<Flight> byArrival(PositionCriteria criteria) {
+    public Collection <Flight> byArrival(PositionCriteria criteria) {
         return service.findByArrival(criteria);
     }
+
+    @GetMapping("/flights/domestic")
+    public Collection <Flight> byDomestic() {
+        return service.findByDomestic();
+    }
 }
+
+
