@@ -66,4 +66,11 @@ public class FlightService {
                 ? f -> false
                 : f -> getter.apply(f).getCountry().equalsIgnoreCase(criteria.getCountry().getValue());
     }
+
+    public Collection<Flight>findByDomestic() {
+        return repository.findAll().stream()
+                .filter(x -> x.getDeparture().getCountry().equals(x.getArrival().getCountry())).collect(toList());
+
+    }
+
 }

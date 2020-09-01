@@ -36,4 +36,9 @@ public class FlightController {
     public Collection<Flight> byArrival(PositionCriteria criteria) {
         return service.findByArrival(criteria);
     }
+
+    @GetMapping("/flights/domestic")
+    public Collection<Flight> byDomestic() { return service.findByDomestic();
+    }
+
 }
